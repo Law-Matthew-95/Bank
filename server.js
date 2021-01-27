@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
     res.send(req.oidc.user || "no user is logged in")
 })
 
-app.get('/profile', requiresAuth(), (req, res) => {
+app.get('/profile', requiresAuth(), (req, res) => { 
     res.send(JSON.stringify(req.oidc.user));
   });
 
