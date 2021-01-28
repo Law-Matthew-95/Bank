@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const { sequelize } = require('./models')
 const { requiresAuth } = require('express-openid-connect');
-const {auth} = require('express-openid-connect')
+// const {auth} = require('express-openid-connect')
 // const authSettings=
 // {
 //     authRequired: false,
