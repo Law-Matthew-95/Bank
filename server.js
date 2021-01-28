@@ -15,7 +15,7 @@ const {auth} = require('express-openid-connect')
 
 if(process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
-  }
+}
 
 app.use(express.json())
 // app.use(auth(authSettings)) 
