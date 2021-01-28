@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const { sequelize } = require('./models')
+// const { sequelize } = require('./models')
 const {auth, requiresAuth} = require('express-openid-connect')
 
 if(process.env.NODE_ENV !== 'production') {
@@ -34,9 +34,9 @@ app.get('/profile', requiresAuth(), (req, res) => {
   });
 
 app.listen(process.env.PORT || 3000, () => {
-    sequelize.sync(() => {
+    
         console.log('Bank app running on port', process.env.PORT)
-    })
+    
 })
 
 // app.listen(3000, () => {
