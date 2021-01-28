@@ -2,7 +2,7 @@
   "name": "bank",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
     "start": "node server.js",
     "watch": "NODE_ENV=dev PORT=3000 nodemon server.js",
