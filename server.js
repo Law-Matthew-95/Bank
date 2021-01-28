@@ -8,7 +8,7 @@ const authSettings=
     authRequired: false,
     auth0Logout: true,
     secret: "This isn't the greatest secret in the world. This is a tribute. ",
-    baseURL: 'https://bank-ekm.herokuapp.com/',
+    baseURL: 'https://kach1ng.herokuapp.com/',
     clientID: 'WV9ock0rqQZG8v1sGbWJT5OpRCfiGkQ7',
     issuerBaseURL: 'https://dev-81ef3zeo.eu.auth0.com'
 }
