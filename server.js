@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const { sequelize } = require('./models')
 const { requiresAuth } = require('express-openid-connect');
-// const {auth} = require('express-openid-connect')
+const {auth} = require('express-openid-connect')
 // const authSettings=
 // {
 //     authRequired: false,
@@ -18,10 +18,11 @@ if(process.env.NODE_ENV !== 'production') {
 }
 
 app.use(express.json())
-// app.use(auth(authSettings)) 
+app.use(auth()) 
 
 
 app.get('/', (req, res) => {
+    console.log(req.oidc);
     res.send(req.oidc.user || "no user is logged in")
 })
 
@@ -34,3 +35,7 @@ app.listen(process.env.PORT, () => {
         console.log('Bank app running on port', process.env.PORT)
     })
 })
+
+// app.listen(3000, () => {
+//     sequelize.sync().then(() => console.log("All ready for users"))
+// })
