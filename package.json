@@ -2,9 +2,10 @@
   "name": "bank",
   "version": "1.0.0",
   "description": "",
-  "main": "indnex.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "watch": "NODE_ENV=dev PORT=3000 nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -25,6 +25,8 @@ app.get('/profile', requiresAuth(), (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
   });
 
-app.listen(3000, () => {
-    sequelize.sync().then(() => console.log("All ready for users"))
+app.listen(process.env.PORT, () => {
+    sequelize.sync(() => {
+        console.log('Bank app running on port', process.env.PORT)
+    })
 })
