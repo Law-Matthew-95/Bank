@@ -8,10 +8,14 @@ const authSettings=
     authRequired: false,
     auth0Logout: true,
     secret: "This isn't the greatest secret in the world. This is a tribute. ",
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://bank-ekm.herokuapp.com/',
     clientID: 'WV9ock0rqQZG8v1sGbWJT5OpRCfiGkQ7',
     issuerBaseURL: 'https://dev-81ef3zeo.eu.auth0.com'
 }
+
+if(process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+  }
 
 app.use(express.json())
 app.use(auth(authSettings))
