@@ -1,24 +1,27 @@
 const express = require('express')
 const app = express()
 const { sequelize } = require('./models')
-const { requiresAuth } = require('express-openid-connect');
-const {auth} = require('express-openid-connect')
-// const authSettings=
-// {
-//     authRequired: false,
-//     auth0Logout: true,
-//     secret: "This isn't the greatest secret in the world. This is a tribute. ",
-//     baseURL: 'https://kach1ng.herokuapp.com/',
-//     clientID: 'WV9ock0rqQZG8v1sGbWJT5OpRCfiGkQ7',
-//     issuerBaseURL: 'https://dev-81ef3zeo.eu.auth0.com'
-// }
+const {auth, requiresAuth} = require('express-openid-connect')
 
 if(process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 
+
+const authSettings=
+{
+    authRequired: false,
+    auth0Logout: true,
+    secret: process.env.AUTH0_SECRET,
+    baseURL: process.env.AUTH0_BASE_URL,
+    clientID: process.env.AUTH0_CLIENT_ID,
+    issuerBaseURL: process.env.AUTH0_DOMAIN
+}
+
+
+
 app.use(express.json())
-app.use(auth()) 
+app.use(auth(authSettings)) 
 
 
 app.get('/', (req, res) => {
@@ -30,7 +33,7 @@ app.get('/profile', requiresAuth(), (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
   });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
     sequelize.sync(() => {
         console.log('Bank app running on port', process.env.PORT)
     })
