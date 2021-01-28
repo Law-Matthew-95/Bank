@@ -7,7 +7,7 @@ const authSettings=
 {
     authRequired: false,
     auth0Logout: true,
-    secret: 'a long, randomly-generated string stored in env',
+    secret: "This isn't the greatest secret in the world. This is a tribute. ",
     baseURL: 'http://localhost:3000',
     clientID: 'WV9ock0rqQZG8v1sGbWJT5OpRCfiGkQ7',
     issuerBaseURL: 'https://dev-81ef3zeo.eu.auth0.com'
@@ -21,10 +21,12 @@ app.get('/', (req, res) => {
     res.send(req.oidc.user || "no user is logged in")
 })
 
-app.get('/profile', requiresAuth(), (req, res) => {
+app.get('/profile', requiresAuth(), (req, res) => { 
     res.send(JSON.stringify(req.oidc.user));
   });
 
-app.listen(3000, () => {
-    sequelize.sync().then(() => console.log("All ready for users"))
+app.listen(process.env.PORT, () => {
+    sequelize.sync(() => {
+        console.log('Bank app running on port', process.env.PORT)
+    })
 })
