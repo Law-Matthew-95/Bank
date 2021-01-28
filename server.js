@@ -18,7 +18,7 @@ if(process.env.NODE_ENV !== 'production') {
   }
 
 app.use(express.json())
-app.use(auth(authSettings))
+app.use(auth(authSettings)) 
 
 
 app.get('/', (req, res) => {
