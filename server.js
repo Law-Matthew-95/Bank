@@ -22,7 +22,7 @@ const authSettings=
 
 app.use(express.json())
 app.use(auth(authSettings))
-
+app.use(express.urlencoded())
 app.set('view engine', 'ejs')
 
 // app.get('/home', (req, res) => {
