@@ -25,14 +25,14 @@ app.use(auth(authSettings))
 
 app.set('view engine', 'ejs')
 
-app.get('/home', (req, res) => {
-    res.render('index')
-    // console.log(req.oidc);
-    // res.send(req.oidc.user || "no user is logged in")
-})
+// app.get('/home', (req, res) => {
+//     res.render('index')
+//     // console.log(req.oidc);
+//     // res.send(req.oidc.user || "no user is logged in")
+// })
 
 app.get('/', (req, res) => {
-    res.render('login')
+    res.render('index')
 })
 
 app.get('/profile', requiresAuth(), (req, res) => { 
