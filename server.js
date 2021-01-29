@@ -41,7 +41,7 @@ app.get('/profile', requiresAuth(), (req, res) => {
 
 app.listen(process.env.PORT || 3000, () => {
     
-        console.log('Bank app running on port', process.env.PORT)
+        console.log('Bank app running on port', process.env.PORT)  
     
 })
 
