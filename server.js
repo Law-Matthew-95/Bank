@@ -21,12 +21,18 @@ const authSettings=
 
 
 app.use(express.json())
-app.use(auth(authSettings)) 
+app.use(auth(authSettings))
 
+app.set('view engine', 'ejs')
+
+app.get('/home', (req, res) => {
+    res.render('index')
+    // console.log(req.oidc);
+    // res.send(req.oidc.user || "no user is logged in")
+})
 
 app.get('/', (req, res) => {
-    console.log(req.oidc);
-    res.send(req.oidc.user || "no user is logged in")
+    res.render('login')
 })
 
 app.get('/profile', requiresAuth(), (req, res) => { 
