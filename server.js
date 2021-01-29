@@ -26,7 +26,7 @@ app.use(auth(authSettings))
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('login')
     // console.log(req.oidc);
     // res.send(req.oidc.user || "no user is logged in")
 })
